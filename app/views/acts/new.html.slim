@@ -1,0 +1,25 @@
+h1 style=' text-align: center;'
+  | Заполнятель актов 🤔
+- if params[:flash].present?
+  div.alert.alert-error style='background-color: #f18973'
+    = params[:flash][:error]
+p style='margin-left: 60px;'
+  | Роспись должна быть размером 400х400 формата PNG с прозрачным фоном, если что могу помочь с этим.
+  br
+  | Формат акта PDF. Если акт поменяется, то нужно будет снова мне написать.
+  = form_tag({:action => :create}, :multipart => true) do
+    p style='margin-left: 60px;'
+      | сюда роспись
+      br
+      = file_field_tag 'signature'
+    p style='margin-left: 60px;'
+      | сюда акт
+      br
+      = file_field_tag 'act'
+      br
+      br
+      = submit_tag 'Отправить'
+br
+br
+p style='margin-left: 60px;' П.с. я не храню вашу инфу, ни акты, ни росписи.
+p style='margin-left: 60px;' Открытый исходный код тут: https://github.com/CepCap/act_filler
